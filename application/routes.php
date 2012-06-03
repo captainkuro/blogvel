@@ -32,10 +32,54 @@
 |
 */
 
+// List of posts
 Route::get('/', function()
 {
 	return View::make('home.index');
 });
+
+// Detail of one post, also give comment
+Route::get('post/(:num)', function($id)
+{
+});
+
+// Process of adding a comment
+Route::post('post/(:num)', function($id)
+{
+});
+
+// Login
+Route::get('login', function()
+{
+});
+
+// Logout
+Route::get('logout', function()
+{
+});
+
+// List of posts to administrate
+Route::get('admin', function() 
+{
+});
+
+// Add/edit one post
+Route::get('admin/(:num?)', function($id = null)
+{
+});
+
+Route::post('admin/(:num?)', function($id = null)
+{
+});
+
+// Approve/unapprove/delete comments
+Route::get('admin/comment', function()
+{
+});
+
+// Common filter
+Route::filter('pattern: admin/*', 'auth');
+
 Route::controller(Controller::detect());
 
 /*

@@ -12,7 +12,6 @@ class Create_Db {
 		// lookups
 		Schema::create('lookups', function($t)
 		{
-			$t->create();
 			$t->increments('id');
 			$t->string('name', 128);
 			$t->integer('code');
@@ -22,7 +21,6 @@ class Create_Db {
 		// users
 		Schema::create('users', function($t)
 		{
-			$t->create();
 			$t->increments('id');
 			$t->string('username', 128);
 			$t->string('password', 128);
@@ -32,7 +30,6 @@ class Create_Db {
 		// posts
 		Schema::create('posts', function($t)
 		{
-			$t->create();
 			$t->increments('id');
 			$t->string('title', 128);
 			$t->text('content');
@@ -41,12 +38,11 @@ class Create_Db {
 			$t->integer('author_id');
 			$t->timestamps();
 			
-			$t->foreign('author_id')->references('id')->on('users');
+			// $t->foreign('author_id')->references('id')->on('users'); // sqlite doesn't support this
 		});
 		// comments
-		Schema::create('comments', function()
+		Schema::create('comments', function($t)
 		{
-			$t->create();
 			$t->increments('id');
 			$t->text('content');
 			$t->integer('status');
@@ -56,12 +52,11 @@ class Create_Db {
 			$t->integer('post_id');
 			$t->timestamps();
 			
-			$t->foreign('post_id')->references('id')->on('posts');
+			// $t->foreign('post_id')->references('id')->on('posts'); // sqlite doesn't support this
 		});
 		// tags
 		Schema::create('tags', function($t)
 		{
-			$t->create();
 			$t->increments('id');
 			$t->string('name', 128);
 			$t->integer('frequency');
