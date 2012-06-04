@@ -3,7 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Blogvel: Practice Project</title>
+	<title>
+	@section('title')
+		Blogvel: Practice Project
+	@yield_section
+	</title>
 	<meta name="viewport" content="width=device-width">
 
 	{{ HTML::style('css/style.css') }}

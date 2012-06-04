@@ -35,53 +35,81 @@
 // List of posts
 Route::get('/', function()
 {
+	// @TODO
 	return View::make('post.list');
 });
 
 // Detail of one post, also give comment
 Route::get('post/(:num)', function($id)
 {
+	// @TODO
 	return View::make('post.detail');
 });
 
 // Process of adding a comment
 Route::post('post/(:num)', function($id)
 {
+	// @TODO
 	return Redirect::to('post/'.$id);
 });
 
 // Login
 Route::get('login', function()
 {
+	if (Auth::check()) 
+	{
+		return Redirect::to('admin');
+	}
+	
+	$attempt = array(
+		'username' => Input::get('username'),
+		'password' => Input::get('password'),
+	);
+	if (Auth::attempt($attempt)) 
+	{
+		return Redirect::to('admin');
+	}
+	
 	return View::make('home.login');
 });
 
 // Logout
 Route::get('logout', function()
 {
+	Auth::logout();
 	return Redirect::to('/');
+});
+
+// Welcome message
+Route::get('admin', function()
+{
+	return View::make('admin.index');
 });
 
 // List of posts to administrate
 Route::get('admin/post', function() 
 {
-	return View::make('admin.index');
+	// @TODO
+	return View::make('admin.posts');
 });
 
 // Add/edit one post
 Route::get('admin/post/(:num?)', function($id = null)
 {
+	// @TODO
 	return View::make('admin.post');
 });
 
 Route::post('admin/post/(:num?)', function($id = null)
 {
+	// @TODO
 	return Redirect::to('admin/post/'.$id);
 });
 
 // Approve/unapprove/delete comments
 Route::get('admin/comment', function()
 {
+	// @TODO
 	return View::make('admin.comments');
 });
 
