@@ -35,46 +35,54 @@
 // List of posts
 Route::get('/', function()
 {
-	return View::make('home.index');
+	return View::make('post.list');
 });
 
 // Detail of one post, also give comment
 Route::get('post/(:num)', function($id)
 {
+	return View::make('post.detail');
 });
 
 // Process of adding a comment
 Route::post('post/(:num)', function($id)
 {
+	return Redirect::to('post/'.$id);
 });
 
 // Login
 Route::get('login', function()
 {
+	return View::make('home.login');
 });
 
 // Logout
 Route::get('logout', function()
 {
+	return Redirect::to('/');
 });
 
 // List of posts to administrate
-Route::get('admin', function() 
+Route::get('admin/post', function() 
 {
+	return View::make('admin.index');
 });
 
 // Add/edit one post
-Route::get('admin/(:num?)', function($id = null)
+Route::get('admin/post/(:num?)', function($id = null)
 {
+	return View::make('admin.post');
 });
 
-Route::post('admin/(:num?)', function($id = null)
+Route::post('admin/post/(:num?)', function($id = null)
 {
+	return Redirect::to('admin/post/'.$id);
 });
 
 // Approve/unapprove/delete comments
 Route::get('admin/comment', function()
 {
+	return View::make('admin.comments');
 });
 
 // Common filter
